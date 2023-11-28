@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { FaShare, FaBell, FaFileMedical, FaPills, FaChartBar, FaUser } from 'react-icons/fa';
+import { FaShare, FaBell, FaFileMedical, FaPills, FaUser } from 'react-icons/fa';
 
 const MedicationPage = () => {
   const [medicationData, setMedicationData] = useState({
     date: new Date(),
-    medications: [
-      { name: 'Medication 1', time: 'Morning' },
-      { name: 'Medication 2', time: 'Afternoon' },
-      // Add more medication details as needed
-    ],
+    medications: [],
   });
 
-  // For demonstration purposes, a sample data is used here
-  const sampleData = {
-    date: new Date(),
-    medications: [
-      { name: 'Paracetamol', time: 'Morning' },
-      { name: 'Diuretic', time: 'Afternoon' },
-      { name: 'Beta blocker', time: 'Afternoon' },
-      { name: 'Cloroquine', time: 'Afternoon' },
-    ],
-  };
-
   useEffect(() => {
-    setMedicationData(sampleData);
+    // Assuming you have an endpoint to fetch medication recommendations
+    const fetchMedications = async () => {
+      try {
+        const response = await fetch('your_api_endpoint_here');
+        const data = await response.json();
+
+        // Update medicationData with the fetched data
+        setMedicationData({
+          date: new Date(),
+          medications: data.medications || [], // Adjust the property names based on your API response
+        });
+      } catch (error) {
+        console.error('Error fetching medication recommendations:', error);
+      }
+    };
+
+    // Call the fetchMedications function
+    fetchMedications();
   }, []); // Empty dependency array to ensure the effect runs only once
 
   const handleNotificationClick = () => {
@@ -57,7 +59,7 @@ const MedicationPage = () => {
         {/* Medication list */}
         <div className='pt-9'>
           {medicationData.medications.map((medication, index) => (
-            <div key={index} className="border p-3 mb-2 flex justify-between items-center">
+            <div key={index} className="border p-3 mb-2 flex justify-between items-center bg-black text-white">
               <div>
                 <h4 className="text-lg font-bold">{medication.name}</h4>
                 <p className="text-gray-600">Time: {medication.time}</p>
@@ -85,7 +87,7 @@ const MedicationPage = () => {
 
 // Extracted reusable mobile navigation button component
 const MobileButton = ({ icon, text }) => (
-  <button className=" text-white px-4 py-2 rounded-md">
+  <button className="text-white px-4 py-2 rounded-md">
     {icon && <span className="mr-2">{icon}</span>}
     {text}
   </button>

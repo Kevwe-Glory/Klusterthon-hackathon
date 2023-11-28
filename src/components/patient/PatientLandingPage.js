@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Landingimage, Prescribe, Set, Track } from '../../asset/image';
+import { Landingmage, Prescribe, Set, Track } from '../../asset/image';
 import { FaLinkedin, FaTwitter, FaInstagram, FaBars } from 'react-icons/fa';
 
 const LandingPage = () => {
@@ -60,7 +60,7 @@ const LandingPage = () => {
           </div>
           {/* Conditionally render the image based on screen size */}
           <div className="md:w-1/2 hidden md:block">
-            <img src={Landingimage} alt="Landing Image" className="w-full h-auto" />
+            <img src={Landingmage} alt="Landing " className="w-full h-auto" />
           </div>
         </div>
 

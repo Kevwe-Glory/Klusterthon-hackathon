@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaLinkedin, FaTwitter, FaInstagram, FaBars } from 'react-icons/fa';
-import { Landingimage, Prescribe, Set, Track } from '../../asset/image';
+import { Landingmage, Prescribe, Set, Track } from '../../asset/image';
 
 const LandingPage = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,7 +59,7 @@ const LandingPage = () => {
             </p>
           </div>
           <div className="md:w-1/2">
-            <img src={Landingimage} alt="Landing Image" className="w-full h-auto" />
+            <img src={Landingmage} alt="Landing" className="w-full h-auto" />
           </div>
         </div>
 

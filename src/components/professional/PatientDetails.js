@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FaUsers } from 'react-icons/fa';
 
@@ -6,17 +6,18 @@ const PatientDetails = () => {
   // Extracting the patient ID from the URL params using useParams
   const { id: patientId } = useParams();
 
-  // Sample static data for demonstration
-  const staticPatientDetails = {
-    firstName: 'John',
-    lastName: 'Doe',
-    phoneNumber: '123-456-7890',
-    email: 'john.doe@example.com',
-    address: '123 Main St, City',
-  };
+  // State for storing the detailed information about a specific patient
+  const [patientDetails, setPatientDetails] = useState(null);
 
-  // Sample static data for medication progress
-  const staticMedicationProgress = 60;
+  // Fetch the details of the specific patient from the backend
+  useEffect(() => {
+    // Example: Fetching patient details from an API
+    // Replace the URL with your actual API endpoint
+    fetch(`https://your-api-url/patients/${patientId}`)
+      .then((response) => response.json())
+      .then((data) => setPatientDetails(data))
+      .catch((error) => console.error('Error fetching patient details:', error));
+  }, [patientId]); // The dependency array ensures the effect runs whenever patientId changes
 
   return (
     <div className='p-6'>
@@ -32,23 +33,23 @@ const PatientDetails = () => {
         </div>
       </div>
       <h2 className='text-bold'>Patient Profile</h2>
-      {staticPatientDetails ? (
-        <div className='mt-9'>
+      {patientDetails ? (
+        <div className='mt-9 '>
           <div className='flex'>
             <img src="" alt="" />
             <p>
-              <strong>Name:</strong> {staticPatientDetails.firstName} {staticPatientDetails.lastName}
+              <strong>Name:</strong> {patientDetails.firstName} {patientDetails.lastName}
             </p>
             <div className='bg-black'>
               <p>Contact Details</p>
               <p>
-                <strong>Email:</strong> {staticPatientDetails.phoneNumber}
+                <strong>Email:</strong> {patientDetails.phoneNumber}
               </p>
               <p>
-                <strong>Email:</strong> {staticPatientDetails.email}
+                <strong>Email:</strong> {patientDetails.email}
               </p>
               <p>
-                <strong>Email:</strong> {staticPatientDetails.address}
+                <strong>Email:</strong> {patientDetails.address}
               </p>
             </div>
           </div>
@@ -64,7 +65,7 @@ const PatientDetails = () => {
           <div className='flex'>
             <div>
               <p className='font-bold'>Patient current medication progress</p>
-              <p>{staticMedicationProgress}% complete</p>
+              <p>60% complete</p>
             </div>
             <div>
               <p>Patient Adherence Report</p>
@@ -81,3 +82,4 @@ const PatientDetails = () => {
 };
 
 export default PatientDetails;
+

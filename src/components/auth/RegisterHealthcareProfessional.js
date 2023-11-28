@@ -75,7 +75,7 @@ const SignupForm = () => {
         <p className='text-[#224AA0] pb-5'>Fill the form correctly to create an account</p>
         <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-md">
           {/* Form fields */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2">
             {['firstName', 'lastName'].map((field) => (
               <div key={field}>
                 <label htmlFor={field} className="block text-sm font-medium text-[#333333]">
@@ -93,10 +93,10 @@ const SignupForm = () => {
                 />
               </div>
             ))}
-          </div>
+          </div> */}
 
           {/* Job Title */}
-          <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700">
+          {/* <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700">
             Job Title
           </label>
           <input
@@ -108,7 +108,7 @@ const SignupForm = () => {
             onChange={handleChange}
             required
             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-          />
+          /> */}
 
           {/* Email */}
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -161,12 +161,12 @@ const SignupForm = () => {
 
           {/* Submit button */}
           <button type="submit" className="bg-[#224AA0] text-white py-2 px-4 rounded-md w-full">
-            <Link to="/login">Sign Up</Link>
+            <Link to="/professional/login">Sign Up</Link>
           </button>
 
           {/* Login link */}
           <p className="text-gray-700 text-sm mt-2 text-center">
-            Already have an account? <Link to="/professional/login" className='text-[#224AA0] font-semibold'>Login</Link>
+            Already have an account? <Link to="/professional/dashboard" className='text-[#224AA0] font-semibold'>Login</Link>
           </p>
         </form>
       </div>
